@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>时钟</title>
+    <meta charset="UTF-8">
+    <style>
+      #clock {
+        font-size: 60px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onload="setInterval('clock()', 1000);">
+    <div id="clock"></div>
+    <script>
+      function clock() {
+        var time = new Date();
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+        var seconds = time.getSeconds();
+        var ampm = hours >= 12 ? '下午' : '上午';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        seconds = seconds < 10 ? '0'+seconds : seconds;
+        var clockStr = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+        document.getElementById("clock").innerHTML = clockStr;
+      }
+    </script>
+  </body>
+</html>
